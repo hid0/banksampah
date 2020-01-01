@@ -63,17 +63,26 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
+  <section class="sidebar" style="height: auto;">
     <!-- Sidebar user panel -->
-    <!-- <div class="user-panel">
+    <div class="user-panel">
       <div class="pull-left image">
-      <img src="" class="img-circle" alt="User Image">
+        <!-- <img src="./assets/images/avatar5.png" class="img-circle" alt="User Image"> -->
+        <img src="./assets/images/user.svg" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-      <p style="font-size: 12px;"></p>
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <p style="font-size: 12px;"><?=$_SESSION['name'];?></p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
-    </div> -->
+    </div>
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" placeholder="Search...." class="form-control">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
         <li>
