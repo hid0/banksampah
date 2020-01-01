@@ -1,5 +1,9 @@
 <?php 
 
+date_default_timezone_get('Asia/Jakarta');
+
+session_start();
+
 $host = 'localhost';
 $user = 'root';
 $pass = '12'; //change with your password ^_^
