@@ -1,7 +1,8 @@
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <!-- <div class="col-md-6 col-md-offset-3"> -->
+        <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">Data Jenis Sampah | Bank Sampah</h3>
@@ -14,21 +15,25 @@
                         <thead>
                             <tr>
                                 <th width="10px">No.</th>
-                                <th>Nama</th>
+                                <th>Nama Jenis</th>
+                                <th>Kategori</th>
+                                <th>Keterangan</th>
                                 <th width="50px">#</th>
                             </tr>
                         </thead>
                         <?php
                         $no  = 1;
-                        $sql = mysqli_query($conn, "SELECT * FROM `tabel_jenis`");
+                        $sql = mysqli_query($conn, "SELECT * FROM `tb_jenis`");
                         while ($res = mysqli_fetch_array($sql)) {
                         ?>
                         <tbody>
                             <tr>
                                 <td><?=$no++?></td>
-                                <td><?=$res['nama_jensam']?></td>
+                                <td><?=$res['nama_jenis']?></td>
+                                <td><?=$res['kategori']?></td>
+                                <td><?=$res['ket']?></td>
                                 <td>
-                                    <a href="?page=master&data=members&a=del&id=<?=$res['id_jensam']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
+                                    <a href="?page=master&data=members&a=del&id=<?=$res['id']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
                                 </td>
                             </tr>
                         </tbody>
@@ -51,13 +56,29 @@
                         <label for="nama">Nama Jenis Sampah</label>
                         <input type="text" class="form-control" name="nama" id="nama" required>
                     </div>
+                    <div class="form-group">
+                        <label for="cat">Kategori</label>
+                        <select name="cat" id="cat" class="form-control">
+                            <option value="">-- Pilih --</option>
+                            <option value="Organik">Organik</option>
+                            <option value="Anorganik">Anorganik</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ket">Keterangan</label>
+                        <textarea name="ket" id="ket" cols="5" rows="3" class="form-control"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button> -->
-                    <button type="submit" name="save" class="btn btn-sm btn-success">
-                        <i class="fa fa-plus"></i>
-                        <span>Tambah</span>
-                    </button>
+                    <div class="pull-right">
+                        <button type="submit" name="save" class="btn btn-sm btn-success">
+                            <i class="fa fa-plus"></i>
+                            <span>Tambah</span>
+                        </button>
+                    </div>
+                    <div class="pull-left">
+                        <button class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
+                    </div>
                 </div>
             </form>
         </div>

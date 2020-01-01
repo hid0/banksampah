@@ -26,6 +26,7 @@ if($_GET['page'] == 'auth') {
                 if (mysqli_num_rows($log) > 0) {
                     $_SESSION['user'] = $user;
                     $_SESSION['name'] = $res['nama_anggota'];
+                    $_SESSION['level'] = $res['level'];
                     echo "<script>document.location.href = '?page=dashboard';</script>";
                 } else {
                     echo "<script>alert('Login Anda Gagal');</script>";
