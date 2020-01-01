@@ -2,18 +2,35 @@
 
 require('./assets/config/conf.php');
 
-if (isset($_SESSION['user'])) {
-    echo "<script>document.location.href = '?page=dashboard';</script>";
-} else {
-    echo "<script>document.location.href = '?page=auth&to=login';</script>";
-}
+// if (isset($_SESSION['user'])) {
+//     echo "<script>document.location.href = '?page=dashboard';</script>";
+// } else {
+//     echo "<script>document.location.href = '?page=auth&to=login';</script>";
+// }
 
 if($_GET['page'] == 'auth') {
     
     if ($_GET['to'] == 'login') {
         
-        echo "<title>Auth Login | Bank Sampah</title>";
-        include "./assets/pages/auth/login.php";
+        if (isset($_SESSION['user'])) {
+            echo "<script>document.location.href = '?page=dashboard';</script>";
+        } else {
+            echo "<title>Auth Login | Bank Sampah</title>";
+            include "./assets/pages/auth/login.php";
+            if (isset($_POST['login'])) {
+                $user = trim(mysqli_real_escape_string($conn, $_POST['uname']));
+                $pass = sha1(trim(mysqli_real_escape_string($conn, $_POST['uname'])));
+                $log  = mysqli_query($conn, "SELECT * FROM tabel_anggota WHERE username='$user' AND password='$pass'");
+                $res  = mysqli_fetch_array($log);
+                if (mysqli_num_rows($log) > 0) {
+                    $_SESSION['user'] = $user;
+                    $_SESSION['name'] = $res['nama_anggota'];
+                    echo "<script>document.location.href = '?page=dashboard';</script>";
+                } else {
+                    echo "<script>alert('Data Gagal ditambah');</script>";
+                }
+            }
+        }
         
     } else if ($_GET['to'] == 'logout') {
         // logout

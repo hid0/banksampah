@@ -117,7 +117,7 @@
           </a>
         </li>
         <li>
-          <a href="?page=logout">
+          <a href="?page=auth&to=logout">
             <i class="fa fa-sign-out"></i><span> Logout</span>
             <span class="pull-right-container"></span>
           </a>

@@ -20,18 +20,18 @@
 
     <form action="../../index2.html" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="text" name="uname" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="passwd" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-4">
           <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-          <a href="?page=dashboard" class="btn btn-primary btn-block btn-flat">Sign In</a>
+          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
