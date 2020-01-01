@@ -12,13 +12,13 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Bank</b> Sampah</a>
+    <a href="#"><b>Bank</b> Sampah</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="uname" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -31,7 +31,7 @@
         <!-- /.col -->
         <div class="col-xs-4">
           <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button> -->
-          <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
