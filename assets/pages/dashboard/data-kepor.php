@@ -62,12 +62,12 @@
                             <th>Keterangan</th>
                             <th>Operator</th>
                         </thead>
-                        <?php
-                        $no  = 1;
-                        $sql = mysqli_query($conn, "SELECT * FROM `tb_sampah` JOIN `tb_jenis` ON `tb_sampah`.`id_jenis`=`tb_jenis`.`id_jenis`");
-                        while ($res = mysqli_fetch_array($sql)) {
-                        ?>
                         <tbody>
+                            <?php
+                            $no  = 1;
+                            $sql = mysqli_query($conn, "SELECT * FROM `tb_sampah` OUTER JOIN `tb_jenis` ON `tb_sampah`.`id_jenis`=`tb_jenis`.`id_jenis`");
+                            while ($res = mysqli_fetch_array($sql)) {
+                            ?>
                             <tr>
                                 <td><?=$no++;?>.</td>
                                 <td><?=$res['nama_jenis'];?></td>
@@ -78,8 +78,8 @@
                                 <td><?=$res['ket'];?></td>
                                 <td><?=$res['operator'];?></td>
                             </tr>
+                            <?php } ?>
                         </tbody>
-                        <?php } ?>
                     </table>
                 </div>
             </div>
