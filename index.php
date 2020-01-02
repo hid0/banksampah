@@ -2,12 +2,6 @@
 
 require('./assets/config/conf.php');
 
-// if (isset($_SESSION['user'])) {
-//     echo "<script>document.location.href = '?page=dashboard';</script>";
-// } else {
-    // echo "<script>document.location.href = '?page=auth&to=login';</script>";
-// }
-
 if($_GET['page'] == 'auth') {
     
     if ($_GET['to'] == 'login') {
