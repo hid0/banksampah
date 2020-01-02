@@ -65,7 +65,7 @@
                         <tbody>
                             <?php
                             $no  = 1;
-                            $sql = mysqli_query($conn, "SELECT * FROM `tb_sampah` OUTER JOIN `tb_jenis` ON `tb_sampah`.`id_jenis`=`tb_jenis`.`id_jenis`");
+                            $sql = mysqli_query($conn, "SELECT * FROM `tb_sampah` JOIN `tb_jenis` ON `tb_sampah`.`id_jenis`=`tb_jenis`.`id_jenis`");
                             while ($res = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>
@@ -87,6 +87,11 @@
         <div class="col-md-2">
             <div class="box box-info box-solid">
                 <div class="box-header with-border">Export Data</div>
+                <div class="box-body">
+                    <a href="?page=export&data=trash" class="btn btn-success">
+                        <i class="fa fa-cloud-download"></i><span> Export Excel</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

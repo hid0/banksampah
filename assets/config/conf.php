@@ -29,31 +29,11 @@ function localdate($tgl) {
 	return $date."/".$month."/".$years;
 }
 
-function filter_sqli($id) {
-    $tolak = ['union','select','group','concat','order by'];
-    $p = str_replace(implode("|",$tolak),"",$id);
-    $p = abs($id);
-    return $p;
+function export_excel($file) {
+    @header("Content-type: application/vnd-ms-excel");
+    @header("Content-Disposition: attachment; filename=".$file);
 }
-function create_session($data = array()){
-    $np = "";
-    if(is_array($data)) {
-        foreach($data as $name => $val) {
-            $np.= $_SESSION[''.$name.''] = $val;
-        }
-    }
-    return $np;
-}
-function get_session($name) {
-    if(empty($_SESSION[''.$name.''])) {
-        $result = "empty";
-    } else {
-        $result = $_SESSION[''.$name.''];
-    }
-    return $result;
-}
-function del_session() {
-    return session_destroy();
-}
+
+
 
 ?>

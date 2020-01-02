@@ -67,7 +67,6 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <!-- <img src="./assets/images/avatar5.png" class="img-circle" alt="User Image"> -->
         <img src="./assets/images/user.svg" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
@@ -103,20 +102,6 @@
             <li><a href="?page=master&data=members"><i class="fa fa-circle-o"></i> Master Anggota</a></li>
             <li><a href="?page=master&data=type"><i class="fa fa-circle-o"></i> Master Jenis</a></li>
             <li><a href="?page=master&data=trash"><i class="fa fa-circle-o"></i> Master Sampah</a></li>
-            <li><a href="?page=master&data=balance"><i class="fa fa-circle-o"></i> Tabungan</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dollar"></i>
-            <span>Transaksi</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="?page=transaction&data=sell"><i class="fa fa-circle-o"></i> Master Jual</a></li>
-            <li><a href="?page=transaction&data=buy"><i class="fa fa-circle-o"></i> Master Beli</a></li>
           </ul>
         </li>
         <li>

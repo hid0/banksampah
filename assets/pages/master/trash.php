@@ -66,7 +66,7 @@
                         <label for="jensam">Jenis Sampah</label>
                         <!-- <input type="text" class="form-control" name="jk" id="jk" required> -->
                         <select name="jensam" id="jensam" class="form-control" required>
-                            <option value="">-- select --</option>
+                            <option value="">-- Pilih --</option>
                         <?php 
                         $sql = mysqli_query($conn, "SELECT * FROM `tabel_jenis`");
                         while ($res = mysqli_fetch_array($sql)) {
