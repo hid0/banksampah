@@ -38,6 +38,7 @@ if($_GET['page'] == 'auth') {
         // logout
         unset($_SESSION['user']);
         unset($_SESSION['name']);
+        unset($_SESSION['level']);
         echo "<script>document.location.href = '?page=auth&to=login';</script>";
     }
     
@@ -46,7 +47,11 @@ if($_GET['page'] == 'auth') {
     if (isset($_SESSION['user'])) {
         include "./assets/pages/_header.php";
         echo "<title>Dashboard | Bank Sampah</title>";
-        include "./assets/pages/dashboard/index.php";
+        if ($_SESSION['level'] == 'administrator') {
+            include "./assets/pages/dashboard/index.php";
+        } else {
+            include "./assets/pages/dashboard/data-kepor.php";
+        }
         include "./assets/pages/_footer.php";
     } else {
         echo "<script>document.location.href = '?page=auth&to=login';</script>";
@@ -156,7 +161,9 @@ if($_GET['page'] == 'auth') {
                 include "./assets/pages/_footer.php";
                 if (isset($_POST['save'])) {
                     $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
-                    $sql = mysqli_query($conn, "INSERT INTO tabel_jenis (nama_jensam) VALUES ('$nama')");
+                    $cat  = trim(mysqli_real_escape_string($conn, $_POST['cat']));
+                    $ket  = trim(mysqli_real_escape_string($conn, $_POST['ket']));
+                    $sql = mysqli_query($conn, "INSERT INTO tb_jenis (nama_jenis, kategori, ket) VALUES ('$nama', '$cat', '$ket')");
                     if ($sql) {
                         echo "<script>alert('Data Berhasil Ditambahkan!');</script>";
                         echo "<script>document.location.href = '?page=master&data=type';</script>";

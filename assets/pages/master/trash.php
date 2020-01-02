@@ -15,10 +15,12 @@
                             <tr>
                                 <th width="10px">No.</th>
                                 <th>Nama Sampah</th>
-                                <th>Jenis Sampah</th>
-                                <th>Harga Beli</th>
-                                <th>Harga Jual</th>
-                                <th>Stok</th>
+                                <th>Kategori</th>
+                                <th>Berat</th>
+                                <th>Lokasi</th>
+                                <th>Tanggal</th>
+                                <th>Keterangan</th>
+                                <th>Operator</th>
                                 <th width="50px">#</th>
                             </tr>
                         </thead>

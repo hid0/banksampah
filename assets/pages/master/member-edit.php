@@ -49,7 +49,8 @@
                             <label for="level">Level</label>
                             <select name="level" id="level" class="form-control" required>
                                 <option value="">-- select --</option>
-                                <option value="admin" <?=$res['level'] == 'admin' ? "selected" : null ?>>Administrator</option>
+                                <option value="admin" <?=$res['level'] == 'administrator' ? "selected" : null ?>>Administrator</option>
+                                <option value="admin" <?=$res['level'] == 'admin' ? "selected" : null ?>>Admin</option>
                                 <option value="member" <?=$res['level'] == 'member' ? "selected" : null ?>>Anggota</option>
                             </select>
                         </div>

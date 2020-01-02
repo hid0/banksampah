@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-info">
-                <div class="box-header with-border">
+                <div class="box-header">
                     <h3 class="box-title">Data Anggota Bank Sampah</h3>
                     <div class="pull-right">
                         <a class="btn btn-sm btn-success" title="tambah anggota" data-toggle="modal" data-target="#addMember"><i class="fa fa-plus"></i></a>
@@ -20,7 +20,7 @@
                                 <th>No.Telp</th>
                                 <th>Username</th>
                                 <th>Level</th>
-                                <th width="50px">#</th>
+                                <th width="80px">#</th>
                             </tr>
                         </thead>
                         <?php
@@ -38,8 +38,8 @@
                                 <td><?=$res['username']?></td>
                                 <td><?=$res['level']?></td>
                                 <td>
-                                    <a href="?page=master&data=members&a=edit&id=<?=$res['no_anggota']?>"><i class="fa fa-edit"></i></a>    
-                                    <a href="?page=master&data=members&a=del&id=<?=$res['no_anggota']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
+                                    <a class="btn btn-xs btn-warning" href="?page=master&data=members&a=edit&id=<?=$res['no_anggota']?>"><i class="fa fa-edit"></i></a>    
+                                    <a class="btn btn-xs btn-danger" href="?page=master&data=members&a=del&id=<?=$res['no_anggota']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
                                 </td>
                             </tr>
                         </tbody>
@@ -91,7 +91,8 @@
                         <label for="level">Level</label>
                         <select name="level" id="level" class="form-control" required>
                             <option value="">-- select --</option>
-                            <option value="admin">Administrator</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="admin">Admin</option>
                             <option value="member">Anggota</option>
                         </select>
                     </div>
