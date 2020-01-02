@@ -17,7 +17,7 @@
           <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
 
           <p>
-            Anda Tidak Punya Hak Untuk Mengakses Hal tersebut<a href="?page=dashboard">Kembali ke dashboard</a>
+            Anda Tidak Punya Hak Untuk Mengakses Halaman tersebut <a href="?page=dashboard">Kembali ke dashboard</a>
           </p>
 
           <form class="search-form">

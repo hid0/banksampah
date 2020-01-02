@@ -51,7 +51,7 @@
             <div class="box box-warning box-solid">
                 <div class="box-header with-border">Master Data Sampah</div>
                 <div class="box-body table-responsive">
-                    <table class="table table-bordered table-hover no-padding">
+                    <table class="table table-bordered table-hover no-padding" id="trash">
                         <thead>
                             <th width="5px">No.</th>
                             <th>Nama Sampah</th>

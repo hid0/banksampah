@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="trash">
                         <thead>
                             <tr>
                                 <th width="10px">No.</th>
@@ -91,8 +91,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button> -->
-                    <button type="submit" name="save" class="btn btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>
+                    <div class="pull-left">
+                        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" name="save" class="btn btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>
+                    </div>
                 </div>
             </form>
         </div>

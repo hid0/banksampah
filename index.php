@@ -141,13 +141,6 @@ if($_GET['page'] == 'auth') {
                     echo "<script>document.location.href = '?page=master&data=trash';</script>";
                 }
 
-            } else if ($_GET['data'] == 'balance') {
-                
-                include "./assets/pages/_header.php";
-                echo "<title>Master Tabungan | Bank Sampah</title>";
-                include "./assets/pages/master/balance.php";
-                include "./assets/pages/_footer.php";
-                
             } else if ($_GET['data'] == 'type') {
 
                 if ($_GET['a'] == '') {

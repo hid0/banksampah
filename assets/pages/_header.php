@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./assets/css/select2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="fixed hold-transition skin-purple">
+<body class="fixed hold-transition skin-green">
 <div class="wrapper">
 
 <header class="main-header">
