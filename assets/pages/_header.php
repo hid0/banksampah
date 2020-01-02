@@ -31,30 +31,6 @@
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li class="dropdown messages-menu">
-        <li class="dropdown user user-menu">
-          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="" class="user-image" alt="User Image">
-          <span class="hidden-xs"><b>Account</b></span>
-          </a> -->
-          <ul class="dropdown-menu">
-          <!-- User image -->
-            <li class="user-header">
-              <img src="" class="img-circle" alt="User Image">
-              <p>
-              </p>
-            </li>
-            <!-- Menu Footer-->
-            <li class="user-footer">
-              <div class="pull-left">
-                <a href="?a=setting" class="btn btn-default btn-flat">Setting</a>
-              </div>
-              <div class="pull-right">
-                <a href="?a=logout" onclick="return confirm('Apakah ingin Keluar?')" class="btn btn-default btn-flat">Logout</a>
-              </div>
-            </li>
-          </ul>
-        </li>
       </ul>
     </div>
 
@@ -90,6 +66,9 @@
             <span class="pull-right-container"></span>
           </a>
         </li>
+        <?php 
+        if ($_SESSION['level'] == 'administrator') {
+        ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i>
@@ -104,6 +83,7 @@
             <li><a href="?page=master&data=trash"><i class="fa fa-circle-o"></i> Master Sampah</a></li>
           </ul>
         </li>
+        <?php } ?>
         <li>
           <a href="?page=settings">
             <i class="fa fa-cogs"></i><span> Setting</span>
@@ -111,7 +91,7 @@
           </a>
         </li>
         <li>
-          <a href="?page=auth&to=logout">
+          <a href="?page=auth&to=logout" onclick="return confirm('Apakah ingin Keluar?')">
             <i class="fa fa-sign-out"></i><span> Logout</span>
             <span class="pull-right-container"></span>
           </a>

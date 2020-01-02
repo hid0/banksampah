@@ -53,7 +53,7 @@
                 <div class="box-body table-responsive">
                     <table class="table table-bordered table-hover no-padding">
                         <thead>
-                            <th>No.</th>
+                            <th width="5px">No.</th>
                             <th>Nama Sampah</th>
                             <th>Kategori</th>
                             <th>Berat</th>
@@ -74,7 +74,7 @@
                                 <td><?=$res['kategori'];?></td>
                                 <td><?=$res['berat'];?></td>
                                 <td><?=$res['lokasi'];?></td>
-                                <td><?=$res['tgl'];?></td>
+                                <td><?=localdate($res['tgl']);?></td>
                                 <td><?=$res['ket'];?></td>
                                 <td><?=$res['operator'];?></td>
                             </tr>

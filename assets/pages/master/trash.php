@@ -26,17 +26,19 @@
                         </thead>
                         <?php
                         $no  = 1;
-                        $sql = mysqli_query($conn, "SELECT * FROM `tabel_sampah`");
+                        $sql = mysqli_query($conn, "SELECT * FROM `tb_sampah` JOIN `tb_jenis` ON `tb_sampah`.`id_jenis`=`tb_jenis`.`id_jenis`");
                         while ($res = mysqli_fetch_array($sql)) {
                         ?>
                         <tbody>
                             <tr>
-                                <td><?=$no++?>.</td>
-                                <td><?=$res['nama_sampah']?></td>
-                                <td><?=$res['id_jensam']?></td>
-                                <td><?=idr($res['harga_beli'])?></td>
-                                <td><?=idr($res['harga_jual'])?></td>
-                                <td><?=$res['stok']?></td>
+                                <td><?=$no++;?>.</td>
+                                <td><?=$res['nama_jenis'];?></td>
+                                <td><?=$res['kategori'];?></td>
+                                <td><?=$res['berat'];?></td>
+                                <td><?=$res['lokasi'];?></td>
+                                <td><?=$res['tgl'];?></td>
+                                <td><?=$res['ket'];?></td>
+                                <td><?=$res['operator'];?></td>
                                 <td>
                                     <a href="?page=master&data=trash&a=edit&id=<?=$res['id_sampah']?>"><i class="fa fa-edit"></i></a>    
                                     <a href="?page=master&data=trash&a=del&id=<?=$res['id_sampah']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
