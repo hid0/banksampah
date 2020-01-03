@@ -49,7 +49,11 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                <?php var_dump($sql); ?>
+                <?php
+                // var_dump($sql);
+                // echo $samp;
+                // echo $ber;
+                ?>
                 </div>
             </div>
         </div>
@@ -95,7 +99,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="pull-left">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-remove"></i> <span>Tutup</span></button>
+                        <button class="btn btn-warning" data-dismiss="modal"><i class="fa fa-remove"></i> <span>Tutup</span></button>
                     </div>
                     <div class="pull-right">
                         <button type="submit" name="save" class="btn btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>

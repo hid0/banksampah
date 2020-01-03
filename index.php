@@ -118,6 +118,7 @@ if($_GET['page'] == 'auth') {
                     echo "<title>Master Sampah | Bank Sampah</title>";
                     include "./assets/pages/master/trash.php";
                     include "./assets/pages/_footer.php";
+
                     if (isset($_POST['save'])) {
                         $samp = trim(mysqli_real_escape_string($conn, $_POST['sampah']));
                         $ber  = trim(mysqli_real_escape_string($conn, $_POST['ber']));
@@ -126,15 +127,17 @@ if($_GET['page'] == 'auth') {
                         $ket  = trim(mysqli_real_escape_string($conn, $_POST['ket']));
                         $oper = trim(mysqli_real_escape_string($conn, $_SESSION['name']));
                         
-                        $sql = mysqli_query($conn, "INSERT INTO tb_sampah (id_sampah, id_jenis, berat, lokasi, tgl, ket, operator) VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
-                        
-                        // if ($sql) {
-                        //     echo "<script>alert('Data Berhasil Ditambahkan');</script>";
-                        //     echo "<script>document.location.href = '?page=master&data=trash';</script>";
-                        // } else {
-                        //     echo "<script>alert('Data Gagal Ditambah');</script>";
-                        // }
+                        // $sql = mysqli_query($conn, "INSERT INTO tb_sampah (id_sampah, id_jenis, berat, lokasi, tgl, ket, operator) VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
+                        $sql = mysqli_query($conn, "INSERT INTO `tb_sampah` VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
+
+                        if ($sql) {
+                            echo "<script>alert('Data Berhasil Ditambahkan');</script>";
+                            echo "<script>document.location.href = '?page=master&data=trash';</script>";
+                        } else {
+                            echo "<script>alert('Data Gagal Ditambah');</script>";
+                        }
                     }
+
                 } else if ($_GET['a'] == 'edit') {
                     include "./assets/pages/_header.php";
                     echo "<title>Edit Data Sampah | Bank Sampah</title>";
@@ -187,6 +190,32 @@ if($_GET['page'] == 'auth') {
         echo "<title>Pengaturan | Bank Sampah</title>";
         include "./assets/pages/setting.php";
         include "./assets/pages/_footer.php";
+        if (isset($_POST['change'])) {
+            $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
+            $jk   = trim(mysqli_real_escape_string($conn, $_POST['jk']));
+            $al   = trim(mysqli_real_escape_string($conn, $_POST['alamat']));
+            $telp = trim(mysqli_real_escape_string($conn, $_POST['telp']));
+            $user = trim(mysqli_real_escape_string($conn, $_POST['user']));
+            $pass = trim(mysqli_real_escape_string($conn, $_POST['pass']));
+            
+            $user = $_SESSION['user'];
+            $sql  = mysqli_query($conn, "UPDATE `tabel_anggota` SET `nama_anggota`='$nama', `jenkel`='$jk', `alamat`='$al', `telp`='$telp', `username`='$user' WHERE `username`='$user'");
+            if ($sql) {
+                echo "<script>alert('Data Berhasil Diubah!');</script>";
+                echo "<script>document.location.href = '?page=settings';</script>";
+            } else {
+                echo "<script>alert('Data Gagal diubah');</script>";
+            }
+        } else if (isset($_POST['changePw'])) {
+            $pass = sha1(trim(mysqli_real_escape_string($conn, $_POST['pass'])));
+            $pas2 = sha1(trim(mysqli_real_escape_string($conn, $_POST['pass2'])));
+            if ($pass === $pas2) {
+                mysqli_query($conn, "UPDATE `tabel_anggota` SET `password`='$pass' WHERE `username`='$user'");
+                echo "<script>alert('Password Berhasil Diubah!');</script>";
+            } else {
+                echo "<script>alert('Password Nggak Sama!');</script>";
+            }
+        }
     } else {
         echo "<script>document.location.href = '?page=auth&to=login';</script>";
     }

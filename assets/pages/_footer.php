@@ -22,12 +22,12 @@
             $(function () {
                 $('#trash').DataTable({
                     'paging'      : true,
-                    // 'lengthChange': false,
-                    "lengthMenu": [
-                        [5, 10, 15, -1],
-                        [5, 10, 15, "All"]
-                    ],
-                    'searching'   : true,
+                    'lengthChange': false,
+                    // "lengthMenu": [
+                    //     [5, 10, 15, -1],
+                    //     [5, 10, 15, "All"]
+                    // ],
+                    'searching'   : false,
                     'ordering'    : false,
                     'info'        : false,
                     'autoWidth'   : false
