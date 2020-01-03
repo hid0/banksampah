@@ -33,7 +33,7 @@
                                 <td><?=$res['kategori']?></td>
                                 <td><?=$res['ket']?></td>
                                 <td>
-                                    <a class="btn btn-xs btn-danger" href="?page=master&data=members&a=del&id=<?=$res['id']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
+                                    <a class="btn btn-xs btn-danger" href="?page=master&data=type&a=del&id=<?=$res['id_jenis']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
                                 </td>
                             </tr>
                         </tbody>

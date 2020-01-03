@@ -127,9 +127,9 @@ if($_GET['page'] == 'auth') {
                         $ket  = trim(mysqli_real_escape_string($conn, $_POST['ket']));
                         $oper = trim(mysqli_real_escape_string($conn, $_SESSION['name']));
                         
-                        // $sql = mysqli_query($conn, "INSERT INTO tb_sampah (id_sampah, id_jenis, berat, lokasi, tgl, ket, operator) VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
-                        $sql = mysqli_query($conn, "INSERT INTO `tb_sampah` VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
-
+                        $sql = mysqli_query($conn, "INSERT INTO tb_sampah (id_jenis, berat, lokasi, tgl, ket, operator) VALUES ('$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
+                        // $sql = mysqli_query($conn, "INSERT INTO `tb_sampah` VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
+                        
                         if ($sql) {
                             echo "<script>alert('Data Berhasil Ditambahkan');</script>";
                             echo "<script>document.location.href = '?page=master&data=trash';</script>";
@@ -137,12 +137,29 @@ if($_GET['page'] == 'auth') {
                             echo "<script>alert('Data Gagal Ditambah');</script>";
                         }
                     }
-
+                    
                 } else if ($_GET['a'] == 'edit') {
                     include "./assets/pages/_header.php";
                     echo "<title>Edit Data Sampah | Bank Sampah</title>";
                     include "./assets/pages/master/trash-edit.php";
                     include "./assets/pages/_footer.php";
+                    if (isset($_POST['ganti'])) {
+                        $samp = trim(mysqli_real_escape_string($conn, $_POST['sampah']));
+                        $ber  = trim(mysqli_real_escape_string($conn, $_POST['ber']));
+                        $lok  = trim(mysqli_real_escape_string($conn, $_POST['lok']));
+                        $tgl  = trim(mysqli_real_escape_string($conn, $_POST['tgl']));
+                        $ket  = trim(mysqli_real_escape_string($conn, $_POST['ket']));
+                        $oper = trim(mysqli_real_escape_string($conn, $_SESSION['name']));
+                        $id   = $_POST['id_sampah'];
+                        $sql = mysqli_query($conn, "UPDATE `tb_sampah` SET `tb_sampah`.`id_jenis`='$samp', `tb_sampah`.`berat`='$ber', `tb_sampah`.`lokasi`='$lok', `tb_sampah`.`tgl`='$tgl', `tb_sampah`.`ket`='$ket', `tb_sampah`.`operator`='$oper' WHERE `tb_sampah`.`id_sampah`='$id'");
+                        
+                        if ($sql) {
+                            echo "<script>alert('Data Berhasil Diubah');</script>";
+                            echo "<script>document.location.href = '?page=master&data=trash';</script>";
+                        } else {
+                            echo "<script>alert('Data Gagal Diubah');</script>";
+                        }
+                    }
                 } else if ($_GET['a'] == 'del') {
                     $id = @$_GET['id'];
                     mysqli_query($conn, "DELETE FROM `tb_sampah` WHERE `tb_sampah`.`id_sampah` = '$id'");
@@ -170,6 +187,11 @@ if($_GET['page'] == 'auth') {
                             echo "<script>alert('Data Gagal ditambah');</script>";
                         }
                     }
+                } else if ($_GET['a'] == 'del') {
+                    $id_jenis = $_GET['id'];
+                    mysqli_query($conn, "DELETE FROM `tb_jenis` WHERE `tb_jenis`.`id_jenis`='$id_jenis'");
+                    echo "<script>alert('Data Berhasil Dihapus!!');</script>";
+                    echo "<script>document.location.href = '?page=master&data=type';</script>";
                 }
             }
         } else {
