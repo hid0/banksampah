@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="./assets/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/select2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="./assets/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="./assets/css/AdminLTE.min.css">
 </head>
 <body class="fixed hold-transition skin-green">
 <div class="wrapper">
@@ -60,7 +60,7 @@
     </form>
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-        <li>
+        <li class="<?=$_GET['page'] == 'dashboard' ? "active" : null ?>">
           <a href="?page=dashboard">
             <i class="fa fa-dashboard"></i><span> Dashboard</span>
             <span class="pull-right-container"></span>
@@ -69,7 +69,7 @@
         <?php 
         if ($_SESSION['level'] == 'administrator') {
         ?>
-        <li class="treeview">
+        <li class="treeview <?=$_GET['page'] == 'master' ? "active menu-open" : null ?>">
           <a href="#">
             <i class="fa fa-database"></i>
             <span> Data Master</span>
@@ -78,13 +78,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="?page=master&data=members"><i class="fa fa-circle-o"></i> Master Anggota</a></li>
-            <li><a href="?page=master&data=type"><i class="fa fa-circle-o"></i> Master Jenis</a></li>
-            <li><a href="?page=master&data=trash"><i class="fa fa-circle-o"></i> Master Sampah</a></li>
+            <li class="<?=$_GET['data'] == 'members' ? "active" : null ?>"><a href="?page=master&data=members"><i class="fa fa-circle-o"></i> Master Anggota</a></li class="">
+            <li class="<?=$_GET['data'] == 'type' ? "active" : null ?>"><a href="?page=master&data=type"><i class="fa fa-circle-o"></i> Master Jenis</a></li class="">
+            <li class="<?=$_GET['data'] == 'trash' ? "active" : null ?>"><a href="?page=master&data=trash"><i class="fa fa-circle-o"></i> Master Sampah</a></li>
           </ul>
         </li>
         <?php } ?>
-        <li>
+        <li class="<?=$_GET['page'] == 'settings' ? "active" : null ?>">
           <a href="?page=settings">
             <i class="fa fa-cogs"></i><span> Setting</span>
             <span class="pull-right-container"></span>

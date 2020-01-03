@@ -10,12 +10,12 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th width="10px">No.</th>
                                 <th>Nama</th>
-                                <th width="105px">Jenis Kelamin</th>
+                                <th width="10px">L/P</th>
                                 <th>Alamat</th>
                                 <th>No.Telp</th>
                                 <th>Username</th>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label for="al">Alamat</label>
-                        <input type="text" class="form-control" name="al" id="al" required>
+                        <textarea name="al" id="al" cols="15" rows="3" class="form-control" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="telp">No.Telp</label>
@@ -98,8 +98,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button> -->
-                    <button type="submit" name="save" class="btn btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>
+                    <div class="pull-left">
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Tutup</button>
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" name="save" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>
+                    </div>
                 </div>
             </form>
         </div>

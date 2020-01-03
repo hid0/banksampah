@@ -73,9 +73,7 @@ if($_GET['page'] == 'auth') {
                         $pass = sha1($_POST['pass']);
                         $level= trim(mysqli_real_escape_string($conn, $_POST['level']));
 
-                        // echo "$nama, $jk, $al, $telp, $user, $pass, $level";
-                        $e = "INSERT INTO tabel_anggota (nama_anggota,jenkel,alamat,telp,username,password,level) VALUES ('$nama', '$jk', '$al', '$telp', '$user', '$pass', '$level')";
-                        $sql = mysqli_query($conn, $e);
+                        $sql = mysqli_query($conn, "INSERT INTO tabel_anggota (nama_anggota,jenkel,alamat,telp,username,password,level) VALUES ('$nama', '$jk', '$al', '$telp', '$user', '$pass', '$level')");
                         if ($sql) {
                             echo "<script>alert('Data Berhasil Ditambahkan!');</script>";
                             echo "<script>document.location.href = '?page=master&data=members';</script>";
@@ -121,13 +119,21 @@ if($_GET['page'] == 'auth') {
                     include "./assets/pages/master/trash.php";
                     include "./assets/pages/_footer.php";
                     if (isset($_POST['save'])) {
-                        $nama   = trim(mysqli_real_escape_string($conn, $_POST['nama']));
-                        $jensam = trim(mysqli_real_escape_string($conn, $_POST['jensam']));
-                        $beli   = trim(mysqli_real_escape_string($conn, $_POST['beli']));
-                        $jual   = trim(mysqli_real_escape_string($conn, $_POST['jual']));
-                        $stok   = trim(mysqli_real_escape_string($conn, $_POST['stok']));
-
-                        // $sql = mysqli_query($conn, "INSERT INTO tabel_sampah () VALUES ()")
+                        $samp = trim(mysqli_real_escape_string($conn, $_POST['sampah']));
+                        $ber  = trim(mysqli_real_escape_string($conn, $_POST['ber']));
+                        $lok  = trim(mysqli_real_escape_string($conn, $_POST['lok']));
+                        $tgl  = trim(mysqli_real_escape_string($conn, $_POST['tgl']));
+                        $ket  = trim(mysqli_real_escape_string($conn, $_POST['ket']));
+                        $oper = trim(mysqli_real_escape_string($conn, $_SESSION['name']));
+                        
+                        $sql = mysqli_query($conn, "INSERT INTO tb_sampah (id_sampah, id_jenis, berat, lokasi, tgl, ket, operator) VALUES ('', '$samp', '$ber', '$lok', '$tgl', '$ket', '$oper')");
+                        
+                        // if ($sql) {
+                        //     echo "<script>alert('Data Berhasil Ditambahkan');</script>";
+                        //     echo "<script>document.location.href = '?page=master&data=trash';</script>";
+                        // } else {
+                        //     echo "<script>alert('Data Gagal Ditambah');</script>";
+                        // }
                     }
                 } else if ($_GET['a'] == 'edit') {
                     include "./assets/pages/_header.php";

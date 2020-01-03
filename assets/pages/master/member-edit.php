@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="al">Alamat</label>
-                            <input type="text" class="form-control" name="al" id="al" value="<?=$res['alamat']?>" required>
+                            <textarea name="al" id="al" cols="15" rows="5" class="form-control"><?=$res['alamat']?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="telp">No.Telp</label>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pass">Password</label>
-                            <input type="text" class="form-control" min="4" name="pass" id="pass" placeholder="Kosongi Jika tidak diubah">
+                            <input type="password" class="form-control" min="4" name="pass" id="pass" value="<?=$res['password']?>" placeholder="Kosongi Jika tidak diubah">
                         </div>
                         <div class="form-group">
                             <label for="level">Level</label>

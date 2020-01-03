@@ -40,13 +40,16 @@
                                 <td><?=$res['ket'];?></td>
                                 <td><?=$res['operator'];?></td>
                                 <td>
-                                    <a href="?page=master&data=trash&a=edit&id=<?=$res['id_sampah']?>"><i class="fa fa-edit"></i></a>    
-                                    <a href="?page=master&data=trash&a=del&id=<?=$res['id_sampah']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
+                                    <a class="btn btn-xs btn-warning" href="?page=master&data=trash&a=edit&id=<?=$res['id_sampah']?>"><i class="fa fa-edit"></i></a>    
+                                    <a class="btn btn-xs btn-danger" href="?page=master&data=trash&a=del&id=<?=$res['id_sampah']?>" onclick="return confirm('Yaking Ingin menghapus?')"><i class="fa fa-trash"></i></a>    
                                 </td>
                             </tr>
                         </tbody>
                         <?php } ?>
                     </table>
+                </div>
+                <div class="box-footer">
+                <?php var_dump($sql); ?>
                 </div>
             </div>
         </div>
@@ -61,38 +64,38 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama">Nama Sampah</label>
-                        <input type="text" class="form-control" name="nama" id="nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="jensam">Jenis Sampah</label>
+                        <label for="sampah">Nama Sampah</label>
                         <!-- <input type="text" class="form-control" name="jk" id="jk" required> -->
-                        <select name="jensam" id="jensam" class="form-control" required>
+                        <select name="sampah" id="sampah" class="select2 form-control" style="width: 100%;" required>
                             <option value="">-- Pilih --</option>
                         <?php 
-                        $sql = mysqli_query($conn, "SELECT * FROM `tabel_jenis`");
+                        $sql = mysqli_query($conn, "SELECT * FROM `tb_jenis`");
                         while ($res = mysqli_fetch_array($sql)) {
                         ?>
-                            <option value="<?=$res['id_jensam']?>"><?=$res['nama_jensam']?></option>
+                            <option value="<?=$res['id_jenis']?>"><?=$res['nama_jenis']?></option>
                         <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="beli">Harga Beli</label>
-                        <input type="text" class="form-control" name="beli" id="beli" required>
+                        <label for="ber">Berat</label>
+                        <input type="number" class="form-control" name="ber" id="ber" required>
                     </div>
                     <div class="form-group">
-                        <label for="jual">Harga Jual</label>
-                        <input type="text" class="form-control" name="jual" id="jual" required>
+                        <label for="lok">Lokasi</label>
+                        <input type="text" class="form-control" name="lok" id="lok" required>
                     </div>
                     <div class="form-group">
-                        <label for="stok">Stok</label>
-                        <input type="number" class="form-control" min="4" name="stok" id="stok" required>
+                        <label for="tgl">Tanggal</label>
+                        <input type="date" class="form-control" name="tgl" id="tgl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ket">Keterangan</label>
+                        <textarea name="ket" id="ket" cols="10" rows="3" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="pull-left">
-                        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-remove"></i> <span>Tutup</span></button>
                     </div>
                     <div class="pull-right">
                         <button type="submit" name="save" class="btn btn-success"><i class="fa fa-plus"></i> <span>Tambah</span></button>

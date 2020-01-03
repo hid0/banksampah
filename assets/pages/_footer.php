@@ -17,5 +17,23 @@
         <script src="./assets/js/adminlte.min.js"></script>
         <script src="./assets/js/dataTables.bootstrap.min.js"></script>
         <script src="./assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="./assets/js/select2.min.js"></script>
+        <script>
+            $(function () {
+                $('#trash').DataTable({
+                    'paging'      : true,
+                    // 'lengthChange': false,
+                    "lengthMenu": [
+                        [5, 10, 15, -1],
+                        [5, 10, 15, "All"]
+                    ],
+                    'searching'   : true,
+                    'ordering'    : false,
+                    'info'        : false,
+                    'autoWidth'   : false
+                });
+                $('.select2').select2();
+            });
+        </script>
     </body>
 </html>
