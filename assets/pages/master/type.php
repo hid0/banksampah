@@ -10,7 +10,7 @@
                         <a class="btn btn-sm btn-success" title="tambah data" data-toggle="modal" data-target="#addType"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
