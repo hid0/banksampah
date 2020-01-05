@@ -18,7 +18,7 @@
 <header class="main-header">
 
 <!-- Logo -->
-  <a href="?page=dashaboard" class="logo">
+  <a href="?page=dashboard" class="logo">
     <span class="logo-mini"><b>B</b>SAM</span>
     <span class="logo-lg"><b>Bank</b> Sampah</span>
   </a>
@@ -47,7 +47,7 @@
       </div>
       <div class="pull-left info">
         <p style="font-size: 12px;"><?=$_SESSION['name'];?></p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <p><i class="fa fa-circle text-success"></i> Online</p>
       </div>
     </div>
     <form action="#" method="get" class="sidebar-form">
