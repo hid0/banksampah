@@ -7,6 +7,7 @@
                     <h3 class="box-title">Edit Data Anggota</h3>
                     <div class="pull-right">
                         <a href="?page=master&data=members" class="btn btn-sm btn-warning" title="Kembali"><i class="fa fa-chevron-left"></i> Kembali</a>
+                        <a class="btn btn-sm btn-danger" title="Edit Password" data-toggle="modal" data-target="#changePass"><i class="fa fa-unlock"></i></a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -42,10 +43,6 @@
                             <input type="text" class="form-control" min="4" name="user" id="user" value="<?=$res['username']?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="pass">Password</label>
-                            <input type="password" class="form-control" min="4" name="pass" id="pass" value="<?=$res['password']?>" placeholder="Kosongi Jika tidak diubah">
-                        </div>
-                        <div class="form-group">
                             <label for="level">Level</label>
                             <select name="level" id="level" class="form-control" required>
                                 <option value="">-- select --</option>
@@ -61,3 +58,33 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="changePass">
+    <div class="modal-dialog modal-sm">
+        <form class="modal-content" action="" method="post">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close">&times;</button>
+                <h4 class="modal-title">Ubah Password</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <!-- password -->
+                    <label for="pass">Password</label>
+                    <input type="password" name="pass" id="pass" class="form-control">
+                </div>
+                <div class="form-group">
+                    <!-- password -->
+                    <label for="pass2">Password Confirmation</label>
+                    <input type="password" name="pass2" id="pass2" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <button type="submit" name="changePw" class="btn btn-success"><i class="fa fa-edit"></i> <span>Ubah</span></button>
+                </div>
+                <div class="pull-left">
+                    <button class="btn btn-warning" data-dismiss="modal"><i class="fa fa-remove"></i> <span>Tutup</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

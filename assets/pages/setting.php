@@ -44,6 +44,7 @@
                         <!-- username -->
                         <label for="user">Username</label>
                         <input type="text" name="user" id="user" class="form-control" value="<?=$res['username'];?>" readonly>
+                        <h6 class="help-block">Jika Ingin Mengganti Username Silahkan hubungi Administrator!!!</h6>
                     </div>
                     <div class="form-group">
                         <div class="pull-left">

@@ -41,10 +41,10 @@ if($_GET['page'] == 'auth') {
     if (isset($_SESSION['user'])) {
         include "./assets/pages/_header.php";
         echo "<title>Dashboard | Bank Sampah</title>";
-        if ($_SESSION['level'] == 'administrator') {
+        if ($_SESSION['level'] == 'administrator' || $_SESSION['level'] == 'member') {
             include "./assets/pages/dashboard/index.php";
-        } else {
-            include "./assets/pages/dashboard/data-kepor.php";
+        } else if($_SESSION['level'] == 'admin') {
+            include "./assets/pages/dashboard/index-admin.php";
         }
         include "./assets/pages/_footer.php";
     } else {
@@ -53,62 +53,75 @@ if($_GET['page'] == 'auth') {
     
 } else if ($_GET['page'] == 'master') {
     
-    if ($_SESSION['level'] == 'admin' || $_SESSION['level'] == 'member') {
+    if ($_SESSION['level'] == 'admin') {
         echo "<script>document.location.href = '?page=404';</script>";
     } else {    
         if (isset($_SESSION['user'])) {
             if ($_GET['data'] == 'members') {
-                
-                if ($_GET['a'] == '') {
-                    include "./assets/pages/_header.php";
-                    echo "<title>Master Anggota | Bank Sampah</title>";
-                    include "./assets/pages/master/members.php";
-                    include "./assets/pages/_footer.php";
-                    if (isset($_POST['save'])) {
-                        $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
-                        $jk   = trim(mysqli_real_escape_string($conn, $_POST['jk']));
-                        $al   = trim(mysqli_real_escape_string($conn, $_POST['al']));
-                        $telp = trim(mysqli_real_escape_string($conn, $_POST['telp']));
-                        $user = trim(mysqli_real_escape_string($conn, $_POST['user']));
-                        $pass = sha1($_POST['pass']);
-                        $level= trim(mysqli_real_escape_string($conn, $_POST['level']));
+                if ($_SESSION['level'] == 'admin' || $_SESSION['level'] == 'member') {
+                    echo "<script>document.location.href = '?page=404';</script>";
+                } else {
+                    if ($_GET['a'] == '') {
+                        include "./assets/pages/_header.php";
+                        echo "<title>Master Anggota | Bank Sampah</title>";
+                        include "./assets/pages/master/members.php";
+                        include "./assets/pages/_footer.php";
+                        if (isset($_POST['save'])) {
+                            $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
+                            $jk   = trim(mysqli_real_escape_string($conn, $_POST['jk']));
+                            $al   = trim(mysqli_real_escape_string($conn, $_POST['al']));
+                            $telp = trim(mysqli_real_escape_string($conn, $_POST['telp']));
+                            $user = trim(mysqli_real_escape_string($conn, $_POST['user']));
+                            $pass = sha1($_POST['pass']);
+                            $level= trim(mysqli_real_escape_string($conn, $_POST['level']));
 
-                        $sql = mysqli_query($conn, "INSERT INTO tabel_anggota (nama_anggota,jenkel,alamat,telp,username,password,level) VALUES ('$nama', '$jk', '$al', '$telp', '$user', '$pass', '$level')");
-                        if ($sql) {
-                            echo "<script>alert('Data Berhasil Ditambahkan!');</script>";
-                            echo "<script>document.location.href = '?page=master&data=members';</script>";
-                        } else {
-                            echo "<script>alert('Data Gagal ditambah');</script>";
+                            $sql = mysqli_query($conn, "INSERT INTO tabel_anggota (nama_anggota,jenkel,alamat,telp,username,password,level) VALUES ('$nama', '$jk', '$al', '$telp', '$user', '$pass', '$level')");
+                            if ($sql) {
+                                echo "<script>alert('Data Berhasil Ditambahkan!');</script>";
+                                echo "<script>document.location.href = '?page=master&data=members';</script>";
+                            } else {
+                                echo "<script>alert('Data Gagal ditambah');</script>";
+                            }
                         }
-                    }
-                } else if ($_GET['a'] == 'edit') {
-                    include "./assets/pages/_header.php";
-                    echo "<title>Edit Data Anggota | Bank Sampah</title>";
-                    include "./assets/pages/master/member-edit.php";
-                    include "./assets/pages/_footer.php";
-                    if (isset($_POST['edit'])) {
-                        $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
-                        $jk   = trim(mysqli_real_escape_string($conn, $_POST['jk']));
-                        $al   = trim(mysqli_real_escape_string($conn, $_POST['al']));
-                        $telp = trim(mysqli_real_escape_string($conn, $_POST['telp']));
-                        $user = trim(mysqli_real_escape_string($conn, $_POST['user']));
-                        $pass = sha1($_POST['pass']);
-                        $level= trim(mysqli_real_escape_string($conn, $_POST['level']));
+                    } else if ($_GET['a'] == 'edit') {
+                        include "./assets/pages/_header.php";
+                        echo "<title>Edit Data Anggota | Bank Sampah</title>";
+                        include "./assets/pages/master/member-edit.php";
+                        include "./assets/pages/_footer.php";
+                        if (isset($_POST['edit'])) {
+                            $nama = trim(mysqli_real_escape_string($conn, $_POST['nama']));
+                            $jk   = trim(mysqli_real_escape_string($conn, $_POST['jk']));
+                            $al   = trim(mysqli_real_escape_string($conn, $_POST['al']));
+                            $telp = trim(mysqli_real_escape_string($conn, $_POST['telp']));
+                            $user = trim(mysqli_real_escape_string($conn, $_POST['user']));
+                            // $pass = sha1($_POST['pass']);
+                            $level= trim(mysqli_real_escape_string($conn, $_POST['level']));
 
-                        $sql = mysqli_query($conn, "UPDATE `tabel_anggota` SET `nama_anggota`='$nama', `jenkel`='$jk', `alamat`='$al', `telp`='$telp', `username`='$user', `password`='$pass', `level`='$level' WHERE `no_anggota`='$id'");
-                        if ($sql) {
-                            echo "<script>alert('Data Berhasil Diubah!');</script>";
-                            echo "<script>document.location.href = '?page=master&data=members';</script>";
-                        } else {
-                            echo "<script>alert('Data Gagal diubah');</script>";
+                            $sql = mysqli_query($conn, "UPDATE `tabel_anggota` SET `nama_anggota`='$nama', `jenkel`='$jk', `alamat`='$al', `telp`='$telp', `username`='$user', `level`='$level' WHERE `no_anggota`='$id'");
+                            if ($sql) {
+                                echo "<script>alert('Data Berhasil Diubah!');</script>";
+                                echo "<script>document.location.href = '?page=master&data=members';</script>";
+                            } else {
+                                echo "<script>alert('Data Gagal diubah');</script>";
+                            }
+                        } else if (isset($_POST['changePw'])) {
+                            $pass = sha1(trim(mysqli_real_escape_string($conn, $_POST['pass'])));
+                            $pas2 = sha1(trim(mysqli_real_escape_string($conn, $_POST['pass2'])));
+                            $id   = $_GET['id'];
+                            if ($pass === $pas2) {
+                                mysqli_query($conn, "UPDATE `tabel_anggota` SET `password`='$pass' WHERE `no_anggota`='$id'");
+                                echo "<script>alert('Password Berhasil Diubah!');</script>";
+                            } else {
+                                echo "<script>alert('Password Nggak Sama!');</script>";
+                            }
                         }
+                        
+                    } else if ($_GET['a'] == 'del') {
+                        $id = @$_GET['id'];
+                        mysqli_query($conn, "DELETE FROM `tabel_anggota` WHERE `tabel_anggota`.`no_anggota` = '$id'");
+                        echo "<script>alert('Data Terhapussss!!');</script>";
+                        echo "<script>document.location.href = '?page=master&data=members';</script>";
                     }
-                    
-                } else if ($_GET['a'] == 'del') {
-                    $id = @$_GET['id'];
-                    mysqli_query($conn, "DELETE FROM `tabel_anggota` WHERE `tabel_anggota`.`no_anggota` = '$id'");
-                    echo "<script>alert('Data Terhapussss!!');</script>";
-                    echo "<script>document.location.href = '?page=master&data=members';</script>";
                 }
 
             } else if ($_GET['data'] == 'trash') {

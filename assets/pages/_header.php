@@ -67,7 +67,7 @@
           </a>
         </li>
         <?php 
-        if ($_SESSION['level'] == 'administrator') {
+        if ($_SESSION['level'] == 'administrator' || $_SESSION['level'] == 'member') {
         ?>
         <li class="treeview <?=$_GET['page'] == 'master' ? "active menu-open" : null ?>">
           <a href="#">
@@ -78,7 +78,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <?php 
+            if ($_SESSION['level'] == 'administrator') { ?>
             <li class="<?=$_GET['data'] == 'members' ? "active" : null ?>"><a href="?page=master&data=members"><i class="fa fa-circle-o"></i> Master Anggota</a></li class="">
+            <?php
+            }
+            ?>
             <li class="<?=$_GET['data'] == 'type' ? "active" : null ?>"><a href="?page=master&data=type"><i class="fa fa-circle-o"></i> Master Jenis</a></li class="">
             <li class="<?=$_GET['data'] == 'trash' ? "active" : null ?>"><a href="?page=master&data=trash"><i class="fa fa-circle-o"></i> Master Sampah</a></li>
           </ul>
